@@ -16,19 +16,19 @@ async def on_command_error(ctx, error):
     
 async def on_message(ctx):
     if ctx.content == '$s':
-    voice_state = ctx.author.voice
+        voice_state = ctx.author.voice
     if (not voice_state) or (not voice_state.channel):
-      #もし送信者がどこのチャンネルにも入っていないなら
-      await ctx.channel.send("先にボイスチャンネルに入っている必要があります。")
-      return
+        await ctx.channel.send("先にボイスチャンネルに入っている必要があります。")
+        return
+    
     channel = voice_state.channel
     await channel.connect()
 
     counter = 0
     async for m in ctx.channel.history(limit=10):
-      if m.content[0:2] == "!p":
-        await message.channel.send(m.content)
-        counter += 1
+        if m.content[0:2] == "!p":
+            await message.channel.send(m.content)
+            counter += 1
 
     voice_client = message.guild.voice_client
     await voice_client.disconnect()
