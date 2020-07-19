@@ -44,7 +44,7 @@ async def reply(ctx):
 
 
 @bot.event
-async def on_message(message):
+async def on_message(ctx):
   if bot.user in ctx.mentions: 
     await reply(ctx)
   await bot.process_commands(ctx) 
