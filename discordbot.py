@@ -19,9 +19,6 @@ async def on_command_error(ctx, error):
     
 @bot.event
 async def on_message(ctx):
-    if ctx.author.bot:
-      return
-
     if ctx.content == 't':
       await ctx.channel.send('test')
     
