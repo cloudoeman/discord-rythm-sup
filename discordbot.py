@@ -14,10 +14,13 @@ async def on_command_error(ctx, error):
     await ctx.send(error_msg)
 
     
+@bot.event
 async def on_message(ctx):
-    if ctx.content == '$s':
-        ctx.channel.send('あ')
+    if ctx.author.bot:
+      return
 
+    if ctx.content == '$s':
+      await ctx.channel.send('あ')
     
 @bot.command()
 async def ping(ctx):
