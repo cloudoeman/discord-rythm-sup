@@ -16,7 +16,26 @@ async def on_command_error(ctx, error):
     error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
     await ctx.send(error_msg)
     
+
+async def reply(message):
+    reply = f'{message.author.mention} とりあえず落ち着け、コマンドの一覧は[/help]だで' 
+    await message.channel.send(reply)
     
+    
+async def help(ctx):
+  await message.channel.send('今実装しているコマンドは、\n'\
+                             '/syamu\n'\
+                             '/rcmm'\
+                             '/dsp'\
+                             'だで')    
+
+
+@client.event
+async def on_message(message):
+    if client.user in message.mentions: 
+        await reply(message) 
+
+        
 @bot.event
 async def on_message(ctx):    
     if ctx.content == 't':
