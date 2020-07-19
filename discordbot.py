@@ -52,7 +52,7 @@ async def syamu(ctx):
     
     
 @bot.command()
-async def パス(ctx):
+async def pas(ctx):
     await ctx.send('グラップルを使うよ！')
 
 bot.run(token)
