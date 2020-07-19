@@ -18,11 +18,10 @@ async def on_command_error(ctx, error):
     
     
 @bot.event
-async def on_message(ctx):
-    await process_commands()
+async def on_message(ctx):    
     if ctx.content == 't':
       await ctx.channel.send('test')
-    
+    await process_commands(ctx)
 
 @bot.command()
 async def ping(ctx):
