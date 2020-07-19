@@ -17,7 +17,7 @@ async def on_command_error(ctx, error):
     await ctx.send(error_msg)
     
     
-@client.event
+@bot.event
 async def on_message(ctx):
     if ctx.author.bot:
       return
