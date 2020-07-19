@@ -53,6 +53,8 @@ async def syamu(ctx):
     
 @bot.event()
 async def on_message(ctx):
+    if ctx.author.bot:
+        return
     if ctx.content == 'パス':
         await ctx.channel.send('グラップルを使うよ！')
 
