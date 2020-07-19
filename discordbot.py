@@ -12,10 +12,31 @@ bot = commands.Bot(command_prefix='/')
 
 @bot.event
 async def on_command_error(ctx, error):
-    orig_error = getattr(error, "original", error)
-    error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
-    await ctx.send(error_msg)
-    
+  orig_error = getattr(error, "original", error)
+  error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
+  await ctx.send(error_msg)
+
+
+@bot.event
+async def on_message(ctx):    
+  if ctx.content == 't':
+    await ctx.channel.send('test')
+  await bot.process_commands(ctx)
+
+
+@bot.command()
+async def ping(ctx):
+  await ctx.send('pong')
+
+
+@bot.command()    
+async def help(ctx):
+  await ctx.send('今実装しているコマンドは、\n'\
+                  '[/syamu]\n'\
+                  '[/rcmm]\n'\
+                  '[/dsp]\n'\
+                  'だで。')
+
 
 async def reply(ctx):
     reply = f'{ctx.author.mention} とりあえず落ち着け、コマンドの一覧は[/help]だで' 
@@ -24,33 +45,15 @@ async def reply(ctx):
 
 @bot.event
 async def on_message(message):
-    if bot.user in ctx.mentions: 
-        await reply(ctx) 
+  if bot.user in ctx.mentions: 
+    await reply(ctx)
+  await bot.process_commands(ctx) 
 
-
-@bot.command()    
-async def help(ctx):
-    await ctx.send('今実装しているコマンドは、\n'\
-                   '[/syamu]\n'\
-                   '[/rcmm]\n'\
-                   '[/dsp]\n'\
-                   'だで。')
-        
-        
-@bot.event
-async def on_message(ctx):    
-    if ctx.content == 't':
-      await ctx.channel.send('test')
-    await bot.process_commands(ctx)
-
-@bot.command()
-async def ping(ctx):
-    await ctx.send('pong')
 
     
 @bot.command()
 async def syamu(ctx):
-    await ctx.send('ウイイイイイイイッッッッス。どうも、シャムでーす。\
+  await ctx.send('ウイイイイイイイッッッッス。どうも、シャムでーす。\
 まぁ今日はオフ会、当日ですけども。\
 えーとですね、まぁ集合場所の、えーイオンシネマに行ってきたんですけども、ただいまの時刻は1時を回りました。\
 はい、ちょっと遅れて来たんですけどもね。えー11時ちょっとすぎくらいに、えーイオンシネマに行ったんですけども。\
@@ -68,37 +71,37 @@ async def syamu(ctx):
     
 @bot.command()
 async def pas(ctx):
-    await ctx.send('グラップルを使うよ！')
+  await ctx.send('グラップルを使うよ！')
     
     
 @bot.command()
 async def rcmm(ctx):
-    await ctx.send('たまたま…たまたま…あの…俺が、おすすめ…俺らがおすすめ…私、我が家…がおすすめしますぅぅう')
-    a = random.randint(0,3)
-    if a == 0:
-      await ctx.send('https://www.youtube.com/watch?v=H6ZlVto_oCs')
-    elif a == 1:
-      await ctx.send('https://www.youtube.com/watch?v=aokzZvBxHIU')
-    elif a == 2:
-      await ctx.send('https://www.youtube.com/watch?v=Qws2n9uBHaE')
-    elif a == 3:
-      await ctx.send('https://www.youtube.com/watch?v=D0GeBHWQtKY')
-    await ctx.send('おもしろいけど、おもしろい')
+  await ctx.send('たまたま…たまたま…あの…俺が、おすすめ…俺らがおすすめ…私、我が家…がおすすめしますぅぅう')
+  a = random.randint(0,3)
+  if a == 0:
+    await ctx.send('https://www.youtube.com/watch?v=H6ZlVto_oCs')
+  elif a == 1:
+    await ctx.send('https://www.youtube.com/watch?v=aokzZvBxHIU')
+  elif a == 2:
+    await ctx.send('https://www.youtube.com/watch?v=Qws2n9uBHaE')
+  elif a == 3:
+    await ctx.send('https://www.youtube.com/watch?v=D0GeBHWQtKY')
+  await ctx.send('おもしろいけど、おもしろい')
     
 
 @bot.command()
 async def dsp(ctx):
-    flag = True
-    tt = 1
-    while flag:
-        async for m in ctx.history(limit=tt):
-            if m.content[0:len("https://www.youtube")] == 'https://www.youtube' and m.author.bot:
-                await m.delete()
-                flag = False
-                await ctx.send('これおすすめなんかな？わからんわ、確信がないわ、紹介するのやめとくわ')
+  flag = True
+  tt = 1
+  while flag:
+    async for m in ctx.history(limit=tt):
+      if m.content[0:len("https://www.youtube")] == 'https://www.youtube' and m.author.bot:
+        await m.delete()
+        flag = False
+        await ctx.send('これおすすめなんかな？わからんわ、確信がないわ、紹介するのやめとくわ')
 
-            else:
-                tt += 1    
+      else:
+        tt += 1    
     
     
 bot.run(token)
