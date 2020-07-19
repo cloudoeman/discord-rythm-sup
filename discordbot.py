@@ -1,12 +1,19 @@
-import discord
 import os
 import traceback
 import random
+import discord
+from discord.ext import commands
 
 token = os.environ['DISCORD_BOT_TOKEN']
 client = discord.Client()
 
 
+@bot.event
+async def on_command_error(ctx, error):
+    orig_error = getattr(error, "original", error)
+    error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
+    await ctx.send(error_msg)
+    
     
 @client.event
 async def on_message(ctx):
@@ -17,6 +24,8 @@ async def on_message(ctx):
       await ctx.channel.send('test')
     
 
-
+@bot.command()
+async def ping(ctx):
+    await ctx.send('pong')
     
 client.run(token)
