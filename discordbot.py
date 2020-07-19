@@ -55,4 +55,22 @@ async def syamu(ctx):
 async def pas(ctx):
     await ctx.send('グラップルを使うよ！')
 
+    
+@bot.command()
+async def dsp(ctx):
+    flag = True
+    tt = 1
+    while flag:
+      async for m in ctx.channel.history(limit=tt):
+
+        if m.content[0:len("https://www.youtube")] == 'https://www.youtube' and m.author.bot:
+          await m.delete()
+          flag = False
+          await ctx.channel.send('これおすすめなんかな？わからんわ、確信がないわ、紹介するのやめとくわ')
+
+        else:
+          tt += 1
+
+    
+    
 bot.run(token)
