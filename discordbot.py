@@ -30,11 +30,11 @@ async def on_message(message):
 
 @bot.command()    
 async def help(ctx):
-  await ctx.send('今実装しているコマンドは、\n'\                 
-                                    '/syamu\n'\                 
-                                    '/rcmm\n'\                
-                                    '/dsp\n'\                 
-                                    'だで')         
+    await ctx.send('今実装しているコマンドは、\n'\
+                   '[/syamu]\n'\
+                   '[/rcmm]\n'\
+                   '[/dsp]\n'\
+                   'だで。')
         
         
 @bot.event
