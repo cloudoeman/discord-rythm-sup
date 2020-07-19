@@ -51,11 +51,8 @@ async def syamu(ctx):
 なのでもう1時間待とうと思ったけどさすがにちょっと腹ペコなんで、えー今回のオフ会は残念ながら、こういう悲しい結果で終わりですね。')
     
     
-@bot.event()
-async def on_message(ctx):
-    if ctx.author.bot:
-        return
-    if ctx.content == 'パス':
-        await ctx.channel.send('グラップルを使うよ！')
+@bot.command()
+async def パス(ctx):
+    await ctx.send('グラップルを使うよ！')
 
 bot.run(token)
