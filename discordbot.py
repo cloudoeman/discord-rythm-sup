@@ -49,7 +49,11 @@ async def syamu(ctx):
 あっ夜ご飯もみんなと一緒に食べようかなと思ってたんで今日は朝、パン一枚でございます。\
 今日の朝食はパン一枚！\
 なのでもう1時間待とうと思ったけどさすがにちょっと腹ペコなんで、えー今回のオフ会は残念ながら、こういう悲しい結果で終わりですね。')
-
-
+    
+    
+@bot.event
+async def on_message(ctx):
+    if ctx.content == 'パス':
+        await ctx.channel.send('グラップルを使うよ！')
 
 bot.run(token)
