@@ -30,7 +30,7 @@ async def ping(ctx):
 
 
 @bot.command()    
-async def help(ctx):
+async def cmd(ctx):
   await ctx.send('今実装しているコマンドは、\n'\
                   '[/syamu]\n'\
                   '[/rcmm]\n'\
@@ -39,7 +39,7 @@ async def help(ctx):
 
 
 async def reply(ctx):
-  reply = f'{ctx.author.mention} とりあえず落ち着け、コマンドの一覧は[/help]だで' 
+  reply = f'{ctx.author.mention} とりあえず落ち着け、コマンドの一覧は[/cmd]だで' 
   await ctx.channel.send(reply)   
 
 
