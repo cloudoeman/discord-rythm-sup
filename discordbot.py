@@ -61,15 +61,14 @@ async def dsp(ctx):
     flag = True
     tt = 1
     while flag:
-      async for m in ctx.history(limit=tt):
+        async for m in ctx.history(limit=tt):
+            if m.content[0:len("https://www.youtube")] == 'https://www.youtube' and m.author.bot:
+                await m.delete()
+                flag = False
+                await ctx.send('これおすすめなんかな？わからんわ、確信がないわ、紹介するのやめとくわ')
 
-        if m.content[0:len("https://www.youtube")] == 'https://www.youtube' and m.author.bot:
-          await m.delete()
-          flag = False
-          await ctx.send('これおすすめなんかな？わからんわ、確信がないわ、紹介するのやめとくわ')
-
-        else:
-          tt += 1
+            else:
+                tt += 1
 
     
     
