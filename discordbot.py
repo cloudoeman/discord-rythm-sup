@@ -21,7 +21,7 @@ async def on_command_error(ctx, error):
 async def on_message(ctx):    
     if ctx.content == 't':
       await ctx.channel.send('test')
-    await process_commands(ctx)
+    await bot.process_commands(ctx)
 
 @bot.command()
 async def ping(ctx):
