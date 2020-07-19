@@ -39,8 +39,8 @@ async def help(ctx):
 
 
 async def reply(ctx):
-    reply = f'{ctx.author.mention} とりあえず落ち着け、コマンドの一覧は[/help]だで' 
-    await ctx.channel.send(reply)   
+  reply = f'{ctx.author.mention} とりあえず落ち着け、コマンドの一覧は[/help]だで' 
+  await ctx.channel.send(reply)   
 
 
 @bot.event
