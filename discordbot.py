@@ -51,13 +51,5 @@ async def syamu(ctx):
 なのでもう1時間待とうと思ったけどさすがにちょっと腹ペコなんで、えー今回のオフ会は残念ながら、こういう悲しい結果で終わりですね。')
 
 
-@bot.command()
-async def del(ctx):
-    async for m in ctx.history(limit=10):
-        if m.author.bot:
-            await ctx.send('これおすすめなんかな？わからんわ、確信がないわ紹介するのやめとくわ')
-            await m.delete()
-            break
-
 
 bot.run(token)
