@@ -17,24 +17,25 @@ async def on_command_error(ctx, error):
     await ctx.send(error_msg)
     
 
-async def reply(message):
-    reply = f'{message.author.mention} とりあえず落ち着け、コマンドの一覧は[/help]だで' 
-    await message.channel.send(reply)
-    
-    
-async def help(ctx):
-  await message.channel.send('今実装しているコマンドは、\n'\
-                             '/syamu\n'\
-                             '/rcmm'\
-                             '/dsp'\
-                             'だで')    
+async def reply(ctx):
+    reply = f'{ctx.author.mention} とりあえず落ち着け、コマンドの一覧は[/help]だで' 
+    await ctx.channel.send(reply)   
 
 
-@client.event
+@bot.event
 async def on_message(message):
-    if client.user in message.mentions: 
-        await reply(message) 
+    if bot.user in ctx.mentions: 
+        await reply(ctx) 
 
+
+@bot.command()    
+async def help(ctx):
+  await ctx.send('今実装しているコマンドは、\n'\                 
+                                    '/syamu\n'\                 
+                                    '/rcmm\n'\                
+                                    '/dsp\n'\                 
+                                    'だで')         
+        
         
 @bot.event
 async def on_message(ctx):    
