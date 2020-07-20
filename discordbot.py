@@ -32,10 +32,11 @@ async def ping(ctx):
 @bot.command()    
 async def cmd(ctx):
   await ctx.send('今実装しているコマンドは、\n'\
-                  '[/syamu]\n'\
-                  '[/rcmm]\n'\
-                  '[/dsp]\n'\
-                  'だで。')
+                 '[/syamu]\n'\
+                 '[/rcmm]\n'\
+                 '[/dsp]\n'\
+                 '[/fuck]\n'\
+                 'だで。')
 
 
 async def reply(ctx):
@@ -105,7 +106,7 @@ async def dsp(ctx):
 
         
 @bot.command()
-async def kill(ctx):
+async def fuck(ctx):
   await ctx.send('https://imgur.com/bc1rT5t')
         
         
