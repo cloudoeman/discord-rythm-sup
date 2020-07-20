@@ -102,6 +102,12 @@ async def dsp(ctx):
 
       else:
         tt += 1    
-    
+
+        
+@bot.command()
+async def kill(ctx):
+  await ctx.send('https://imgur.com/bc1rT5t')
+        
+        
     
 bot.run(token)
